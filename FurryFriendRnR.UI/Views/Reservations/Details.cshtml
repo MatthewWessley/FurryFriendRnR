@@ -1,0 +1,43 @@
+﻿@model FurryFriendRnR.DATA.EF.Reservation
+
+@{
+    ViewBag.Title = "Reservation Details";
+}
+
+<div class="container">
+    <h2><br />@ViewBag.Title</h2><hr />
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.ReservationDate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ReservationDate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Location.LocationName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Location.LocationName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.OwnerAsset.PetName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.OwnerAsset.PetName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ReservationId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<br />

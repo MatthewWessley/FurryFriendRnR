@@ -1,0 +1,115 @@
+﻿@model FurryFriendRnR.DATA.EF.OwnerAsset
+
+@{
+    ViewBag.Title = "Pet Details";
+}
+
+<div class="container">
+    <h2><br />@ViewBag.Title</h2><hr />
+
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.PetName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.AssetPhoto)
+            </dt>
+
+            <dd>
+                <img src="~/Content/images/@Model.AssetPhoto" alt="@Model.PetName" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SpecialNotes)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SpecialNotes)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsActive)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateAdded)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PetBreed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetBreed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RecordFile)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RecordFile)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PetBirthdate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetBirthdate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Weight)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Weight)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Color)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Color)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsFixed)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsFixed)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PetGender)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PetGender)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.OwnerAssetId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
+<br />

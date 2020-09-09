@@ -1,0 +1,92 @@
+﻿@model PagedList.IPagedList<FurryFriendRnR.DATA.EF.Reservation>
+@using PagedList.Mvc;
+
+
+@{
+    ViewBag.Title = "Reservations";
+}
+
+
+<div class="container">
+    <h2><br />@ViewBag.Title</h2><hr />
+
+    @if (User.IsInRole("Admin") || User.IsInRole("Family"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+        <hr />
+    }
+
+
+    <div>
+        <div class="row">
+            <div class="col-sm-6">
+                @using (Html.BeginForm("Index", "Reservations", FormMethod.Get))
+                {
+                    <p>
+                        Search: @Html.TextBox("searchString", ViewBag.CurrentFIlter as string)
+                        <input type="submit" value="Search" id="searchButton" />
+                    </p>
+                }
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().OwnerAsset.PetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().Location.LocationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().ReservationDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerAsset.PetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Location.LocationName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReservationDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details |", "Details", new { id = item.ReservationId })
+
+                    @if (User.IsInRole("Admin") || User.IsInRole("Family"))
+                    {
+                        @Html.ActionLink("Edit |", "Edit", new { id = item.ReservationId })
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ReservationId })
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    <div class="col-sm-6">
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.CurrentFilter }))
+        @if (Model.Count == 0)
+        {
+            <p class="alert alert-warning">
+                No results meet your criteria
+            </p>
+        }
+    </div>
+</div>
+<br />

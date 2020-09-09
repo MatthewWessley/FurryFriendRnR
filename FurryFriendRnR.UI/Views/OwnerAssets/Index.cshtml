@@ -1,0 +1,83 @@
+﻿@model IEnumerable<FurryFriendRnR.DATA.EF.OwnerAsset>
+@using Microsoft.AspNet.Identity;
+
+@{
+    ViewBag.Title = "My Pets";
+}
+
+<div class="container">
+    <h2><br />@ViewBag.Title</h2><hr />
+    @if (User.IsInRole("Admin") || User.IsInRole("Family"))
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+        </p>
+    }
+    <br />
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssetPhoto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetBreed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetBirthdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PetGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsFixed)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img class="img-thumbnail" src="~/Content/images/pets/@item.AssetPhoto" alt="@item.PetName" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetBreed)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetBirthdate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Color)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PetGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsFixed)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.OwnerAssetId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.OwnerAssetId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.OwnerAssetId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<br />
