@@ -4070,6 +4070,7 @@
     <Content Include="Content\fonts\themify\fonts\themify.ttf" />
     <Content Include="Content\fonts\themify\fonts\themify.woff" />
     <Content Include="Content\fonts\themify\Themify IconFonts 5-23-2014.json" />
+    <Content Include="Content\MatthewWessleyDocumentation.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

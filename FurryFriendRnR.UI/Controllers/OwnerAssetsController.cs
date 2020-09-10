@@ -78,7 +78,7 @@ namespace FurryFriendRnR.UI.Controllers
                     if (goodExts.Contains(ext.ToLower()) && (assetPhoto.ContentLength <= 4194304))
                     {
                         imgName = Guid.NewGuid() + ext;
-                        assetPhoto.SaveAs(Server.MapPath("~/Content/images/" + imgName));
+                        assetPhoto.SaveAs(Server.MapPath("~/Content/images/pet" + imgName));
                     }
                     else
                     {
@@ -177,7 +177,7 @@ namespace FurryFriendRnR.UI.Controllers
 
             if (ownerAsset.AssetPhoto != null && ownerAsset.AssetPhoto != "noimg.jpg")
             {
-                System.IO.File.Delete(Server.MapPath("~/Content/images/" + Session["currentImage"].ToString()));
+                System.IO.File.Delete(Server.MapPath("~/Content/images/pet" + Session["currentImage"].ToString()));
             }
 
             db.OwnerAssets.Remove(ownerAsset);
